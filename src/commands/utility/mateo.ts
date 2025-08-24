@@ -10,7 +10,7 @@ interface SightEngineApiResponseSuccess {
     operations: number;
   };
   type: {
-    ai_generated: number; // Score de 0 a 1
+    ai_generated: number;
   };
   media: {
     id: string;
@@ -34,12 +34,11 @@ client.on(Events.MessageCreate, async (message) => {
     await fetch(url)
       .then(async function (response) {
         if (!response.ok) {
-          // handle HTTP error responses
           const errorData = await response
             .json()
             .catch(() => ({ message: response.statusText }));
           throw new Error(
-            `HTTP ${response.status}: ${JSON.stringify(errorData)}`,
+            `HTTP ${response.status}: ${JSON.stringify(errorData)}`
           );
         }
         return response.json();
@@ -63,7 +62,6 @@ client.on(Events.MessageCreate, async (message) => {
         console.log(error.message);
       });
   });
-  console.log(message);
 
   return;
 });
