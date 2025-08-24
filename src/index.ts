@@ -23,7 +23,7 @@ export const client: Client = new Client({
 (async () => {
   try {
     eventHandler(client);
-    await client.login(process.env.TOKEN!);
+    await client.login(process.env.DEV_TOKEN!);
   } catch (error) {
     console.error(`Error: ${error}`);
   }

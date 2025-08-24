@@ -28,8 +28,8 @@ client.on(Events.MessageCreate, async (message) => {
   message.attachments.forEach(async (attachment) => {
     url.searchParams.append("url", attachment.url);
     url.searchParams.append("models", "genai");
-    url.searchParams.append("api_user", process.env.SIGHT_API_USER!);
-    url.searchParams.append("api_secret", process.env.SIGHT_API_SECRET!);
+    url.searchParams.append("api_user", process.env.DEV_SIGHT_API_USER!);
+    url.searchParams.append("api_secret", process.env.DEV_SIGHT_API_SECRET!);
 
     await fetch(url)
       .then(async function (response) {
