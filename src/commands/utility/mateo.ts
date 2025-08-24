@@ -1,6 +1,5 @@
 import { Events } from "discord.js";
 import { client } from "../../index";
-import { MATEO_ID } from "../../utils/constants";
 
 interface SightEngineApiResponseSuccess {
   status: "success" | "error";
@@ -19,9 +18,11 @@ interface SightEngineApiResponseSuccess {
 }
 
 client.on(Events.MessageCreate, async (message) => {
-  if (message.author.id !== MATEO_ID || message.author.bot) return;
+  if (message.author.id !== process.env.TARGET_DISCORD_ID || message.author.bot)
+    return;
+
   if (message.attachments.size === 0) return;
-  if (message.channel.id !== "1106569629406601309") return;
+  if (message.channel.id !== process.env.TARGET_DISCORD_CHANNEL_ID) return;
 
   const url = new URL("https://api.sightengine.com/1.0/check.json");
 
@@ -39,7 +40,7 @@ client.on(Events.MessageCreate, async (message) => {
             .json()
             .catch(() => ({ message: response.statusText }));
           throw new Error(
-            `HTTP ${response.status}: ${JSON.stringify(errorData)}`,
+            `HTTP ${response.status}: ${JSON.stringify(errorData)}`
           );
         }
         return response.json();
