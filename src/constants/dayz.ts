@@ -1,6 +1,10 @@
 export const DAYZ_MESSAGES = [
-  `La interacción con los demás jugadores y la construcción hacia el siguiente encuentro.\nTanto vos como la otra persona seguramente estuvieron la última hora y media looteando, los dos tienen mucho que perder. Esto hace que los encuentros no se sientan como pvps fugaces en un call of duty sino que sea de vida o muerte literal.`,
-  `Los controles intuitivos hacen que se sienta como si estuvieras vos mismo controlando al personaje con tu propio cuerpo.`,
-  `Las diferentes reacciones de los jugadores al encontrarse con otra persona simula las reacciones que tendrían en un apocalipsis real.`,
-  `Uno de los juegos más visualmente impresionantes e increiblemente optimizados de la historia.`,
+  `Los cascos militares cubren toda la cabeza independientemente del modelo y protegen lo mismo.`,
+  `**Crafteo de Caña de pescar:** palo largo + cuerda. Se combina con un bait (gancho de hueso + gusano).`,
+  `**Crafteo de Cuchillo de piedra:** afilar una piedra (item) contra una roca del entorno.`,
+  `**Crafteo de Trípode de cocina:** palo largo + x2 palos cortos.`,
+  `**El loot es temporal. DayZ es un roguelike. No vuelvas a buscar tu loor.**`,
+  `Nunca estés más de 10 segundos looteando en el lugar después de disparar.`,
+  `Si un random te dice que es friendly, no es friendly.`,
+  `La calidad de la munición no afecta si se tranca el arma o no.`,
 ];
