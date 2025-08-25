@@ -41,7 +41,7 @@ client.on(Events.MessageCreate, async (message) => {
             .json()
             .catch(() => ({ message: response.statusText }));
           throw new Error(
-            `HTTP ${response.status}: ${JSON.stringify(errorData)}`
+            `HTTP ${response.status}: ${JSON.stringify(errorData)}`,
           );
         }
         return response.json();
