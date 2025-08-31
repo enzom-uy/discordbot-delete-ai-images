@@ -37,7 +37,7 @@ export default async function registerCommands(client: Client) {
 
       if (!mod.data || typeof mod.execute !== "function") {
         console.warn(
-          `[registerCommands] skipping ${group}/${file}: missing data or execute`
+          `[registerCommands] skipping ${group}/${file}: missing data or execute`,
         );
         continue;
       }
@@ -55,7 +55,7 @@ export default async function registerCommands(client: Client) {
   // bulk overwrite to Discord
   if (!client.application) {
     console.warn(
-      "client.application is undefined; are you calling this before `ready`?"
+      "client.application is undefined; are you calling this before `ready`?",
     );
   } else {
     const payload = client.commands.map((cmd) => cmd.data.toJSON());
