@@ -18,21 +18,18 @@ interface SightEngineApiResponseSuccess {
 }
 
 client.on(Events.MessageCreate, async (message) => {
-  if (
-    message.author.id !== process.env.DEV_TARGET_DISCORD_ID ||
-    message.author.bot
-  )
+  if (message.author.id !== process.env.TARGET_DISCORD_ID || message.author.bot)
     return;
   if (message.attachments.size === 0) return;
-  if (message.channel.id !== process.env.DEV_TARGET_DISCORD_CHANNEL_ID) return;
+  if (message.channel.id !== process.env.TARGET_DISCORD_CHANNEL_ID) return;
 
   const url = new URL("https://api.sightengine.com/1.0/check.json");
 
   message.attachments.forEach(async (attachment) => {
     url.searchParams.append("url", attachment.url);
     url.searchParams.append("models", "genai");
-    url.searchParams.append("api_user", process.env.DEV_SIGHT_API_USER!);
-    url.searchParams.append("api_secret", process.env.DEV_SIGHT_API_SECRET!);
+    url.searchParams.append("api_user", process.env.SIGHT_API_USER!);
+    url.searchParams.append("api_secret", process.env.SIGHT_API_SECRET!);
 
     await fetch(url)
       .then(async function (response) {
@@ -41,7 +38,7 @@ client.on(Events.MessageCreate, async (message) => {
             .json()
             .catch(() => ({ message: response.statusText }));
           throw new Error(
-            `HTTP ${response.status}: ${JSON.stringify(errorData)}`
+            `HTTP ${response.status}: ${JSON.stringify(errorData)}`,
           );
         }
         return response.json();
