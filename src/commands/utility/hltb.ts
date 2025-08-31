@@ -21,6 +21,8 @@ interface Response {
     main_sides: string;
     completionist: string;
   };
+  GameID: string;
+  GameURL: string;
 }
 
 export async function execute(
@@ -43,6 +45,9 @@ export async function execute(
 
   if (response.error) {
     await interaction.editReply("Ha ocurrido un error al buscar el juego.");
+    console.error(
+      `[HLTB ERROR] There was an error fetching the game. Check API Key.`,
+    );
     return;
   }
 
@@ -57,6 +62,8 @@ export async function execute(
     **Historia principal:** ${mainStory}
     **Historia principal + extras:** ${mainSides}
     **Completionista:** ${completionist}
+
+    **Source:** ${response.GameURL}
         `,
   );
 }
