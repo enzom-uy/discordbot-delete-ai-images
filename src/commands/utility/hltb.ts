@@ -31,7 +31,9 @@ export async function execute(
 ) {
   await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
-  const queryUrl = new URL("http://localhost:3333/api/v1/scraper/search");
+  const queryUrl = new URL(
+    "https://hltb-go-scraper-production.up.railway.app/api/v1/scraper/search",
+  );
   const game = interaction.options.getString("juego");
   queryUrl.searchParams.append("game_name", game);
   console.log(queryUrl);
