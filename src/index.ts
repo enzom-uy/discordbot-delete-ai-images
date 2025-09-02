@@ -24,7 +24,7 @@ export const client: Client = new Client({
 (async () => {
   try {
     eventHandler(client);
-    await client.login(process.env.DEV_TOKEN!);
+    await client.login(process.env.TOKEN!);
     console.log("Bot is ready!");
     setupBot();
   } catch (error) {
